@@ -14,7 +14,7 @@ Before starting make sure you have:
 
 Click the button below and follow the instructions.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/opencomponents/starter-kit)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aresobus/oc-starter-kit)
 
 ## #2 - Build your first component
 
