@@ -1,0 +1,27 @@
+{
+  "name": "opencomponents-starter-kit",
+  "version": "1.0.0",
+  "description": "Get up and running with OpenComponents in 3 simple steps",
+  "scripts": {
+    "test": "true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aresobus/oc-starter-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aresobus/oc-starter-kit/issues"
+  },
+  "homepage": "https://github.com/aresobus/oc-starter-kit/issues#readme",
+  "author": {
+    "name": "Alex Leb",
+    "email": "aresobus@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "oc": "^0.44.0",
+    "oc-template-react": "2.1.0",
+    "oc-template-react-compiler": "5.2.0"
+  }
+}
