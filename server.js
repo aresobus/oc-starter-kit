@@ -1,40 +1,37 @@
 'use strict';
+const oc = require('oc');
+const s3 = require('./s3-adapter/index');
 
-// Store ENV variables in .env to set up your local development
-// https://github.com/motdotla/dotenv#usage
-require('dotenv').config();
-const Registry = require('oc').Registry;
-const react = require('oc-template-react')
-
-// Minimal configuration for the registry
-// For advanced configuration check the documantion:
-// https://github.com/opentable/oc/wiki/Registry
-const configuration = {
-  baseUrl: process.env.NOW_URL || process.env.BASEURL,
-  port: process.env.PORT || 3000,
-  publishAuth: {
-    type: 'basic',
-    username: process.env.PUBLISH_USERNAME,
-    password: process.env.PUBLISH_PASSWORD
+let conf = {
+  verbosity: 5, //
+  baseUrl: '', // Registry URL
+  port: 3333, // Registry port - must match the port of the baseUrl
+  refreshInterval: 600,
+  pollingInterval: 5,
+  templates: [require('oc-template-react'), require('oc-template-jade')],
+  storage: {
+    adapter: s3,
+    options: {
+      key: '', // Access key
+      secret: '', // Secret key
+      bucket: '',
+      region: '',
+      componentsDir: 'components',
+      // signatureVersion: 'v2', // Use v2 for RiakCS
+      sslEnabled: false,
+      path: ``,
+      s3ForcePathStyle: true, // Necessary to get the path right - will not prefix the bucket to the domain name but add it as part of the URL path
+      debug: true, // Log what AWS-SDK is up to to stdout
+    }
   },
-  s3: {
-    key: process.env.S3_KEY,
-    secret: process.env.S3_SECRET,
-    bucket: process.env.S3_BUCKET,
-    region: process.env.S3_REGION,
-    path: `//s3.${process.env.S3_REGION}.amazonaws.com/${process.env.S3_BUCKET}/`,
-    componentsDir: 'components'
-  },
-  dependencies: [],
-  templates: [react]
+  env: { name: 'production' }
 };
 
-// Instantiate the registry
-// An express.js app is exposed as registry.app
-//test commit for privacy
-const registry = new Registry(configuration);
-registry.start(function (err, app) {
-  if (err) {
+let registry = new oc.Registry(conf);
+
+registry.start(function(err, app){
+  console.log('a')
+  if(err) {
     console.log('Registry not started: ', err);
     process.exit(1);
   }

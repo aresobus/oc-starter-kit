@@ -22,6 +22,7 @@
     "dotenv": "^6.0.0",
     "oc": "^0.44.0",
     "oc-template-react": "2.1.0",
-    "oc-template-react-compiler": "5.2.0"
+    "oc-template-react-compiler": "5.2.0",
+    "oc-template-jade": "^7.0.0"
   }
 }
